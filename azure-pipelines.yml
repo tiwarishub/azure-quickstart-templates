@@ -19,11 +19,13 @@ steps:
   displayName: 'Run a multi-line script'
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
-    deploymentScope: 'Subscription'
+    deploymentScope: 'Resource Group'
     azureResourceManagerConnection: 'RMDev(2)(c00d16c7-6c1f-4c03-9be1-6934a4c49682)'
     subscriptionId: 'c00d16c7-6c1f-4c03-9be1-6934a4c49682'
-    location: 'North Central US'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'aaaatiwarishub-rg'
+    location: 'West Central US'
     templateLocation: 'Linked artifact'
     csmFile: '$(System.ArtifactsDirectory)/azuredeploy.json'
-    csmParametersFile: '$(System.ArtifactsDirectory)/$(Release.PrimaryArtifactSourceAlias)/azuredeploy.parameters.json'
+    csmParametersFile: '$(System.ArtifactsDirectory1)/$(Release.PrimaryArtifactSourceAlias)/azuredeploy.parameters.json'
     deploymentMode: 'Incremental'
